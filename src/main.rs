@@ -28,7 +28,7 @@ async fn mine_address(starting_letters: String) {
             PublicKey::from(SecpPublicKey::from_slice(&public_key.serialize()[..]).unwrap());
 
         // Generate pay-to-pubkey-hash address.
-        let address = Address::p2pkh(&bitcoin_public_key, Network::Bitcoin);
+        let address = Address::p2pkh(&bitcoin_public_key, Network::Testnet);
 
         // Ignore the specified number of characters when checking for a match.
         let address_tail = &address.to_string()[1..]; // Start from the second character onward
