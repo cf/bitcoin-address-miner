@@ -10,6 +10,6 @@ repository = "https://github.com/r3drun3/bitcoin-address-miner"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bitcoin = { version = "0.31.0", features = ["rand-std"] }
+bitcoin = { git = "https://github.com/QEDProtocol/rust-dogecoin", rev = "8eedd4dd8113f4f2af1e8fbdc5bf53ffeb3e19cf", features = [ "serde", "rand-std" ] }
 tokio = { version = "1", features = ["full"] }
 hex = "0.4.2"
