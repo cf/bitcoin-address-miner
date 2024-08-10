@@ -2,6 +2,7 @@ use bitcoin::{Address, PublicKey, Network};
 use bitcoin::secp256k1::{rand, Secp256k1, PublicKey as SecpPublicKey};
 use hex::encode_upper;
 use std::time::Instant;
+use std::env;
 
 fn check_allowed_chars(starting_letters: &str) -> bool {
     let allowed_chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
@@ -51,9 +52,14 @@ async fn mine_address(starting_letters: String) {
 async fn main() {
     // Ask the user for the starting letters.
     println!("[BITCOIN KEY/ADDRESS MINING] \n Enter the starting letters for the address: ");
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input).expect("Failed to read input");
-    let starting_letters = input.trim().to_string();
+    //let mut input = String::new();
+    //std::io::stdin().read_line(&mut input).expect("Failed to read input");
+    let args: Vec<String> = env::args().collect();
+    let prefix_search = args[1].trim().to_string();
+    println!("searching for {}", prefix_search);
+    
+
+    let starting_letters = prefix_search;
     println!("\n Starting mining...this may take many minutes (or even days) to complete");
 
     // Check if all characters in starting_letters are allowed.
